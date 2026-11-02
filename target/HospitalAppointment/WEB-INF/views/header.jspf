@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><c:out value="${pageTitle}"/> | CityCare Hospital</title>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="${pageContext.request.contextPath}/"><span>+</span>CityCare Hospital</a>
+  <c:if test="${not empty sessionScope.user}">
+    <nav>
+      <span><c:out value="${sessionScope.user.fullName}"/> <span class="role">(<c:out value="${sessionScope.user.role}"/>)</span></span>
+      <a class="logout" href="${pageContext.request.contextPath}/logout">Log out</a>
+    </nav>
+  </c:if>
+</header>
+<main class="container">
+<c:if test="${not empty flashMsg}">
+  <div class="alert alert-${flashType == 'success' ? 'success' : 'error'}" role="alert"><c:out value="${flashMsg}"/></div>
+</c:if>
